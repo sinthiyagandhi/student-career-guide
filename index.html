@@ -6,6 +6,9 @@
 
     <title>Student Career Guide</title>
 
+    <meta name="description"
+          content="Student Career Guide helps students explore career paths, discover skills, find learning resources and plan their careers.">
+
     <style>
         * {
             margin: 0;
@@ -14,314 +17,382 @@
             scroll-behavior: smooth;
         }
 
+        :root {
+            --primary: #4f46e5;
+            --secondary: #7c3aed;
+            --light: #f5f7ff;
+            --dark: #1f2937;
+            --text: #374151;
+            --white: #ffffff;
+            --border: #e5e7eb;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #f7f7ff;
-            color: #222;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--light);
+            color: var(--text);
             line-height: 1.6;
         }
 
-        header {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
-        }
-
-        header h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-
-        header p {
-            font-size: 20px;
-            max-width: 700px;
-            margin: auto;
-        }
+        /* NAVIGATION */
 
         nav {
-            background: white;
-            padding: 18px;
-            text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            padding: 15px 20px;
         }
 
-        nav a {
-            text-decoration: none;
-            color: #4f46e5;
+        .nav-container {
+            max-width: 1150px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 21px;
             font-weight: bold;
-            margin: 0 15px;
+            color: var(--primary);
         }
 
-        nav a:hover {
-            color: #7c3aed;
-        }
-
-        section {
-            padding: 60px 20px;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        section h2 {
-            text-align: center;
-            color: #4f46e5;
-            font-size: 32px;
-            margin-bottom: 25px;
-        }
-
-        .about {
-            text-align: center;
-            max-width: 800px;
-            margin: auto;
-            font-size: 18px;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        .nav-links {
+            display: flex;
             gap: 25px;
-            margin-top: 30px;
+            list-style: none;
         }
 
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: bold;
             transition: 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-8px);
+        .nav-links a:hover {
+            color: var(--primary);
         }
 
-        .card h3 {
-            color: #4f46e5;
-            margin-bottom: 12px;
+        .menu-btn {
+            display: none;
+            font-size: 25px;
+            border: none;
+            background: none;
+            cursor: pointer;
         }
 
-        .skills {
-            background: #eeeeff;
-            max-width: none;
+        /* HERO */
+
+        .hero {
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 70px 20px;
+            color: white;
+            background: linear-gradient(
+                135deg,
+                #4338ca,
+                #6366f1,
+                #7c3aed
+            );
         }
 
-        .skills-container {
-            max-width: 1100px;
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 21px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 15px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        /* GENERAL */
+
+        section {
+            padding: 75px 20px;
+        }
+
+        .container {
+            max-width: 1150px;
             margin: auto;
         }
 
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
+        .section-title {
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 36px;
         }
 
-        .skill {
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #6b7280;
+        }
+
+        /* ABOUT */
+
+        .about-box {
+            max-width: 850px;
+            margin: auto;
             background: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-            color: #4f46e5;
-            font-weight: bold;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .button {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 12px 25px;
-            background: white;
-            color: #4f46e5;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-        }
-
-        .button:hover {
-            background: #eeeeff;
-        }
-
-        .contact {
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.07);
             text-align: center;
         }
 
-        footer {
-            background: #24214a;
+        .about-box p {
+            font-size: 18px;
+        }
+
+        /* CAREER SEARCH */
+
+        .search-box {
+            max-width: 650px;
+            margin: 0 auto 35px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 17px 22px;
+            border: 2px solid var(--border);
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+            background: white;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+
+        /* CAREER CARDS */
+
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+            gap: 25px;
+        }
+
+        .career-card {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 18px;
+            box-shadow: 0 7px 25px rgba(0,0,0,0.07);
+            transition: 0.3s;
+            text-align: center;
+            border: 1px solid transparent;
+        }
+
+        .career-card:hover {
+            transform: translateY(-8px);
+            border-color: #c7d2fe;
+            box-shadow: 0 12px 30px rgba(79,70,229,0.15);
+        }
+
+        .career-icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .career-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .career-card p {
+            font-size: 15px;
+            color: #6b7280;
+            margin-bottom: 18px;
+        }
+
+        .learn-btn {
+            background: var(--primary);
             color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .learn-btn:hover {
+            background: var(--secondary);
+        }
+
+        .no-results {
             text-align: center;
+            display: none;
             padding: 25px;
-            margin-top: 30px;
+            color: #6b7280;
         }
 
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 34px;
-            }
+        /* SKILLS */
 
-            header p {
-                font-size: 17px;
-            }
-
-            nav a {
-                margin: 0 7px;
-                font-size: 14px;
-            }
+        .skills-section {
+            background: #eef0ff;
         }
-    </style>
-</head>
 
-<body>
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
 
-    <header>
-        <h1>Student Career Guide</h1>
-        <p>Explore careers, discover skills, and build your future.</p>
-        <a href="#careers" class="button">Explore Careers</a>
-    </header>
+        .skill-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+        }
 
-    <nav>
-        <a href="#about">About</a>
-        <a href="#careers">Careers</a>
-        <a href="#skills">Skills</a>
-        <a href="#learning">Learning</a>
-        <a href="#contact">Contact</a>
-    </nav>
+        .skill-card span {
+            font-size: 35px;
+        }
 
-    <section id="about">
-        <h2>About Student Career Guide</h2>
+        .skill-card h3 {
+            margin: 10px 0;
+            color: var(--primary);
+        }
 
-        <div class="about">
-            <p>
-                Student Career Guide is a platform designed to help students
-                understand different career opportunities, discover useful
-                skills, and find learning paths to build a successful career.
-            </p>
-        </div>
-    </section>
+        /* ROADMAP */
 
-    <section id="careers">
-        <h2>Explore Career Paths</h2>
+        .roadmap {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-top: 40px;
+        }
 
-        <div class="cards">
+        .roadmap-step {
+            background: white;
+            padding: 25px 15px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+            position: relative;
+        }
 
-            <div class="card">
-                <h3>💻 Software Development</h3>
-                <p>
-                    Explore programming, web development, applications,
-                    and software engineering careers.
-                </p>
-            </div>
+        .step-number {
+            width: 45px;
+            height: 45px;
+            margin: auto;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
 
-            <div class="card">
-                <h3>📊 Data Science</h3>
-                <p>
-                    Learn about data analysis, Python, SQL, machine learning,
-                    and data-driven careers.
-                </p>
-            </div>
+        .roadmap-step h3 {
+            margin: 15px 0 8px;
+            color: var(--primary);
+        }
 
-            <div class="card">
-                <h3>🤖 Artificial Intelligence</h3>
-                <p>
-                    Discover AI, machine learning, deep learning,
-                    and emerging technology opportunities.
-                </p>
-            </div>
+        /* RESOURCES */
 
-            <div class="card">
-                <h3>🔐 Cyber Security</h3>
-                <p>
-                    Understand cyber security, ethical security practices,
-                    networks, and information protection.
-                </p>
-            </div>
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
 
-            <div class="card">
-                <h3>📢 Business & Marketing</h3>
-                <p>
-                    Explore business development, digital marketing,
-                    sales, communication, and management careers.
-                </p>
-            </div>
+        .resource-card {
+            background: white;
+            padding: 28px;
+            border-radius: 17px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
 
-            <div class="card">
-                <h3>🎧 IT Support</h3>
-                <p>
-                    Learn about technical support, customer support,
-                    operations, and IT service careers.
-                </p>
-            </div>
+        .resource-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
 
-        </div>
-    </section>
+        .resource-card a {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+        }
 
-    <section id="skills" class="skills">
-        <div class="skills-container">
+        /* QUIZ */
 
-            <h2>Skills to Build</h2>
+        .quiz-box {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
 
-            <div class="skill-list">
-                <div class="skill">Python</div>
-                <div class="skill">SQL</div>
-                <div class="skill">Excel</div>
-                <div class="skill">Communication</div>
-                <div class="skill">Problem Solving</div>
-                <div class="skill">Data Analysis</div>
-                <div class="skill">AI & ML</div>
-                <div class="skill">Digital Skills</div>
-            </div>
+        .question {
+            margin-bottom: 28px;
+        }
 
-        </div>
-    </section>
+        .question h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
 
-    <section id="learning">
-        <h2>Learning Path</h2>
-
-        <div class="cards">
-
-            <div class="card">
-                <h3>1️⃣ Discover</h3>
-                <p>Understand your interests and explore different career paths.</p>
-            </div>
-
-            <div class="card">
-                <h3>2️⃣ Learn</h3>
-                <p>Build the technical and communication skills required for your chosen field.</p>
-            </div>
-
-            <div class="card">
-                <h3>3️⃣ Practice</h3>
-                <p>Work on projects, exercises, and real-world problems.</p>
-            </div>
-
-            <div class="card">
-                <h3>4️⃣ Start Your Career</h3>
-                <p>Build your resume, apply for opportunities, and prepare for interviews.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <h2>Contact</h2>
-
-        <p>
-            Have suggestions or questions about the Student Career Guide?
-        </p>
-
-        <a href="mailto:your-email@example.com" class="button">
-            Contact Us
-        </a>
-    </section>
-
-    <footer>
-        <p>© 2026 Student Career Guide | Created by Sinthiya</p>
-    </footer>
-
-</body>
-</html>
+        .option {
+            display: block;
+            background: #f5f7ff;
+            padding: 12px 15px;
+            margin: 8px
